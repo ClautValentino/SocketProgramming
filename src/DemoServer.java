@@ -1,3 +1,4 @@
+//Claut Valentino 08/10/2021
 import java.net.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,16 +16,16 @@ public class DemoServer {
 		BufferedReader in = null;
 		PrintWriter out = null;
 		
+		try {
+			// Welcoming Socket (per 3-way handshake)
+			ws = new ServerSocket(7979);
+		} catch (IOException e) {			
+			e.printStackTrace();
+			System.out.println("Welcoming socket error!");
+		}
+		
 		while(true)
-		{
-			try {
-				// Welcoming Socket (per 3-way handshake)
-				ws = new ServerSocket(7979);
-			} catch (IOException e) {			
-				e.printStackTrace();
-				System.out.println("Welcoming socket error!");
-			}
-			
+		{	
 			try {
 				s = ws.accept();  // create connection socket
 			} catch (IOException e) {			
@@ -34,7 +35,7 @@ public class DemoServer {
 			try {
 				//in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 				out = new PrintWriter(s.getOutputStream(), true);
-				out.println("Provate l'algoridmo di ordinamento bubble sort");
+				out.println("Benvenuto nel serber di Claut Valentino");
 				System.out.println("remote host: "+s.getInetAddress());
 			} catch (IOException e) {			
 				e.printStackTrace();
